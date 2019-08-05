@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  </head>
+  <body>
+    <input type="file" id="video_input" />
+    <br />
+    <div id="video_viewer">
+      <video id="video_source" src="" controls></video>
+    </div>
+    <br />
+    <button type="button" id="playpause">Play/Pause</button>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#video_input").on('change', function() {
+          var reader = new FileReader();
+          reader.onload = function(video) {
+            console.log(video);
+            $("#video_source").attr("src", video.target.result);
+          };
+
+          reader.readAsDataURL(this.files[0]);
+        });
+      });
+    </script>
+  </body>
+</html>
